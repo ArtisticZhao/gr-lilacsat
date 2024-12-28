@@ -99,7 +99,8 @@ list(APPEND lilacsat_sources
     vitfilt27_bb_impl.cc
     vitfilt27_fb_impl.cc
     ccsds_afsk_encode_impl.cc
-    ccsds_afsk_decode_impl.cc )
+    ccsds_afsk_decode_impl.cc
+    send_file_pdu_impl.cc )
 
 set(lilacsat_sources "${lilacsat_sources}" PARENT_SCOPE)
 if(NOT lilacsat_sources)

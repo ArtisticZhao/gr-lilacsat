@@ -1,0 +1,168 @@
+options:
+  parameters:
+    author: lilac
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: a222
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Not titled yet
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '32000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: audio_sink_0
+  id: audio_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    device_name: ''
+    num_inputs: '1'
+    ok_to_block: 'True'
+    samp_rate: '8000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1456, 536.0]
+    rotation: 0
+    state: disabled
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1072, 368.0]
+    rotation: 0
+    state: true
+- name: blocks_socket_pdu_0
+  id: blocks_socket_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    host: 192.168.31.11
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mtu: '10000'
+    port: '52030'
+    tcp_no_delay: 'False'
+    type: TCP_SERVER
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1048, 200.0]
+    rotation: 0
+    state: disabled
+- name: dslwp_attach_sync_marker_0
+  id: dslwp_attach_sync_marker
+  parameters:
+    affinity: ''
+    alias: ''
+    check_length: 'False'
+    comment: ''
+    data_format: '2'
+    marker: '[0x03, 0x22, 0x00, 0x00, 0x00]'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    msg_len: '0'
+    pass_other_length: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [640, 244.0]
+    rotation: 0
+    state: enabled
+- name: lilacsat_afsk1200_tx_f_0
+  id: lilacsat_afsk1200_tx_f
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    destination: BJ2CR-8
+    maxoutbuf: '1024'
+    minoutbuf: '0'
+    msg_ptt_off: '[254, 254, 124, 224, 28, 0, 0, 253]'
+    msg_ptt_on: '[254, 254, 124, 224, 28, 0, 1, 253]'
+    padding_zero: 'False'
+    ptt_mode: '1'
+    repeater1: ''
+    repeater2: ''
+    source: BY2HIT-9
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1064, 548.0]
+    rotation: 0
+    state: disabled
+- name: lilacsat_send_file_pdu_0
+  id: lilacsat_send_file_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    path: /home/lilac/111.grc
+    pdu_len: '218'
+    period: '3000'
+    terminal: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [352, 348.0]
+    rotation: 0
+    state: true
+
+connections:
+- [dslwp_attach_sync_marker_0, out, blocks_message_debug_0, print_pdu]
+- [dslwp_attach_sync_marker_0, out, blocks_socket_pdu_0, pdus]
+- [dslwp_attach_sync_marker_0, out, lilacsat_afsk1200_tx_f_0, in]
+- [lilacsat_afsk1200_tx_f_0, '0', audio_sink_0, '0']
+- [lilacsat_send_file_pdu_0, out, dslwp_attach_sync_marker_0, in]
+
+metadata:
+  file_format: 1

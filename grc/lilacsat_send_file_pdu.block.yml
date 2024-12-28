@@ -1,0 +1,26 @@
+id: lilacsat_send_file_pdu
+label: Send File PDU
+category: '[LilacSat]'
+templates:
+  imports: import lilacsat
+  make: lilacsat.send_file_pdu(${path}, ${pdu_len}, ${period}, ${terminal})
+parameters:
+- id: path
+  label: Path
+  dtype: string
+- id: pdu_len
+  label: Pdu_len
+  dtype: int
+  default: 218
+- id: period
+  label: Period (ms)
+  dtype: int
+  default: 3000
+- id: terminal
+  label: Terminal
+  dtype: int
+  default: 0
+outputs:
+- domain: message
+  id: out
+file_format: 1

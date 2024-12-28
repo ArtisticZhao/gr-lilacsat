@@ -99,5 +99,6 @@ install(FILES
     vitfilt27_bb.h
     vitfilt27_fb.h
     ccsds_afsk_encode.h
-    ccsds_afsk_decode.h DESTINATION include/lilacsat
+    ccsds_afsk_decode.h
+    send_file_pdu.h DESTINATION include/lilacsat
 )

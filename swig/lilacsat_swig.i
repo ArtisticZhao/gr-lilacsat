@@ -41,6 +41,7 @@
 #include "lilacsat/vitfilt27_fb.h"
 #include "lilacsat/ccsds_afsk_decode.h"
 #include "lilacsat/ccsds_afsk_encode.h"
+#include "lilacsat/send_file_pdu.h"
 %}
 
 %include "lilacsat/afsk1200_rx_f.h"
@@ -113,3 +114,5 @@ GR_SWIG_BLOCK_MAGIC2(lilacsat, vitfilt27_fb);
 GR_SWIG_BLOCK_MAGIC2(lilacsat, ccsds_afsk_decode);
 %include "lilacsat/ccsds_afsk_encode.h"
 GR_SWIG_BLOCK_MAGIC2(lilacsat, ccsds_afsk_encode);
+%include "lilacsat/send_file_pdu.h"
+GR_SWIG_BLOCK_MAGIC2(lilacsat, send_file_pdu);
